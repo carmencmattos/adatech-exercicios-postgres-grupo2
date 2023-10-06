@@ -128,25 +128,29 @@ delete from filmes where titulo like ('%Star Wars%')or diretor like('%Columbus%'
 Dado o modelo textual/lógico abaixo, escreva os comandos SQL para criar as tabelas, suas restrições e relações quando aplicáveis e insira pelo menos 5 registros em cada uma das tabelas.
 
     alunos(nome, numero_aluno, tipo_aluno, curso)
-
+```
 create table tb_alunos(nome character varying(50) not null,
 num_aluno numeric(4) not null,
 tipo_aluno numeric(4)not null,
 curso character varying(10)not null,
 CONSTRAINT id_aluno PRIMARY KEY (num_aluno)
 );
+```
 
     disciplinas(nome_disciplina, numero_disciplina, creditos, departamento)
 
+```
 create table tb_disciplinas(nome_disciplina character varying(50) not null,
 num_disciplina character varying(10) not null,
 creditos numeric (4)not null,
 departamento character varying(10)not null,
 CONSTRAINT id_disciplina PRIMARY KEY (num_disciplina)
 );
+```
 
     turmas(identificacao_turma, numero_disciplina, semestre, ano, professor
 
+```
 create table tb_turmas(id_turma numeric(4) not null,
 num_disciplina character varying(10) not null,
 semestre character varying(10) not null,
@@ -155,16 +159,20 @@ professor character varying(20) not null,
 CONSTRAINT id_turma PRIMARY KEY (id_turma),
 CONSTRAINT num_disciplina FOREIGN KEY (num_disciplina) REFERENCES tb_disciplinas(num_disciplina)
 );
+```
 
     pre_requisitos(numero_disciplina, numero_pre_requisito)
 
+```
 create table tb_pre_requisitos(num_disciplina character varying(10) not null,
 num_pre_requisito character varying(10) not null,
 CONSTRAINT num_disciplina FOREIGN KEY (num_disciplina) REFERENCES tb_disciplinas(num_disciplina),
 CONSTRAINT num_pre_requisito FOREIGN KEY (num_pre_requisito) REFERENCES tb_disciplinas(num_disciplina);
 );
+```
 historico_escolar(numero_aluno, identificacao_turma, nota)
 
+```
 create table tb_historico_escola(num_aluno numeric(4) not null,
 id_turma numeric(4) not null,
 nota character varying(10) not null,
@@ -172,6 +180,7 @@ CONSTRAINT num_aluno FOREIGN KEY (num_aluno) REFERENCES tb_alunos(num_aluno),
 CONSTRAINT id_turma FOREIGN KEY (id_turma) REFERENCES tb_turmas(id_turma)
 )
 
+```
 Feito, isso, execute o comando SQL abaixo, para inserir mais registros:
 
 ```sql
