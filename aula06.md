@@ -281,44 +281,55 @@ select * from tb_pre_requisitos;
 Executar as seguintes consultas:
 
 - Recuperar uma lista de todas as disciplinas e notas de Silva.
-
+´´´ 
 select alunos.nome as nome_aluno, turmas.num_disciplina as disciplina, historico.id_turma as turma, historico.nota as nota
 from tb_alunos as alunos
 join tb_historico_escola as historico on alunos.num_aluno = historico.num_aluno
 join tb_turmas as turmas on historico.id_turma = turmas.id_turma
 where alunos.nome = 'Silva';
+´´´ 
 
 - Listar os nomes dos alunos que realizaram a disciplina Banco de dados oferecida no segundo semestre de 2008 e suas notas nessa turma.
 
+´´´ 
 select alunos.nome as nome_aluno, historico.nota as nota
 from tb_disciplinas as disciplinas
 join tb_turmas as turmas on turmas.num_disciplina = disciplinas.num_disciplina
 join tb_historico_escola as historico on historico.id_turma = turmas.id_turma
 join tb_alunos as alunos on alunos.num_aluno = historico.num_aluno
 where disciplinas.nome_disciplina = 'Banco de dados'and turmas.ano = 2008 and turmas.semestre = 'Segundo';
+´´´ 
 
 - Listar os pré-requisitos do curso de Banco de dados.
 
+´´´ 
 select requisitos.num_pre_requisito as requisitos
 from tb_pre_requisitos as requisitos
 join tb_disciplinas as disciplinas on requisitos.num_disciplina = disciplinas.num_disciplina
 where disciplinas.nome_disciplina = 'Banco de dados'
+´´´ 
 
 Executar as seguintes atualizações no banco de dados
 
 - Alterar o tipo de aluno de Silva para segundo ano.
 
+´´´ 
 update tb_alunos set tipo_aluno = 2 where nome = 'Silva';
+´´´ 
 
 - Criar outra turma para a disciplina Banco de dados para este semestre.
 
+´´´ 
 insert into tb_turmas (id_turma,num_disciplina, semestre, ano, professor)
 values (145,'CC3380','Segundo', 2023, 'Bruna');
 select * from tb_turmas;
+´´´ 
 
 - Inserir uma nota A para Silva na turma Banco de dados do último semestre.
 
+´´´ 
 insert into tb_historico_escola (num_aluno, id_turma, nota)
 values (17, 145, 'A');
+´´´ 
 
 &nbsp;
